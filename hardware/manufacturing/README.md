@@ -45,10 +45,8 @@ manufacturing/
 ├── README.md
 ├── gerbers/
 │   └── IM-BCI8_RevA_Gerbers.zip
-├── BOM/
-│   └── IM-BCI8_RevA_BOM.csv
-└── assembly/
-    └── IM-BCI8_RevA_positions.csv
+└── BOM/
+    └── IM-BCI8_RevA_BOM.csv
 ```
 
 ### Gerbers
