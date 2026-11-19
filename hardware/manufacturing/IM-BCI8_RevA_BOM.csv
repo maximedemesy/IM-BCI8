@@ -1,0 +1,34 @@
+Reference,Quantity,Value,Manufacturer,Manufacturer Part Number,Supplier,Supplier Part Number,KiCad Footprint,Description,Notes
+"C1, C6",2,10 µF,Taiyo Yuden,LMK107BBJ106MALT,DigiKey,587-3258-1-ND,C_0603_1608Metric,10 µF 10 V X5R MLCC,General decoupling / regulator input.
+C2,1,100 µF,KEMET,T520B107M006ATE040,DigiKey,399-4008-1-ND,CP_EIA-3528-21_Kemet-B,"100 µF 6.3 V polymer tantalum, low ESR",ADS1299 VCAP1. POLARIZED — observe orientation.
+"C3, C4, C5, C7, C8, C9",6,1 µF,KEMET,C0603C105K4RACTU,DigiKey,399-C0603C105K4RACTUCT-ND,C_0603_1608Metric,1 µF 16 V X7R MLCC,
+"C10, C21, C22, C26, C27, C29, C30, C32, C35, C39",10,100 nF,TDK,C1608X7R1H104K080AA,DigiKey,445-1314-1-ND,C_0603_1608Metric,100 nF 50 V X7R MLCC,C10 is labelled 0.1 µF in KiCad; same component/value.
+"C11, C23, C24, C25, C28, C31, C33, C34, C38",9,10 µF,KEMET,C1206C106K4PACTU,DigiKey,399-C1206C106K4PACTUCT-ND,C_1206_3216Metric,10 µF 16 V X5R MLCC,
+C12,1,1.5 nF,YAGEO,CC0603KRX7R9BB152,DigiKey,311-1184-1-ND,C_0603_1608Metric,1.5 nF 50 V X7R MLCC,ADS1299 BIAS compensation network with R2.
+"C13, C14, C15, C16, C17, C18, C19, C20, C40",9,4.7 nF,KEMET,C0805C472K5RECAUTO,DigiKey,399-17884-1-ND,C_0805_2012Metric,4.7 nF 50 V X7R MLCC,Input filters; C40 is the SRB1/reference filter.
+"C36, C37",2,4.7 µF,KEMET,C0603C475K8PACTU,DigiKey,399-C0603C475K8PACTUCT-ND,C_0603_1608Metric,4.7 µF 10 V X5R MLCC,MCP73831 VDD/VBAT local capacitors.
+D1,1,Green LED,ams OSRAM,KT EELP41.12-S2U1-25-2X4Y-5-R18,DigiKey,475-KTEELP41.12-S2U1-25-2X4Y-5-R18CT-ND,LED_0603_1608Metric,Green 0603 LED,Firmware-controlled status LED (GPIO4). POLARIZED.
+D2,1,Red LED,Broadcom,ASCKCR00-BU5V5020402,DigiKey,516-ASCKCR00-BU5V5020402CT-ND,LED_0603_1608Metric,Red 0603 LED,MCP73831 charge-status LED. POLARIZED.
+FL1,1,600 Ω @ 100 MHz,Murata,BLM18KG601BH1D,DigiKey,490-14032-1-ND,R_0603_1608Metric,"Ferrite bead, 1 A",+5V_BOOST → +5V_AFE filtering.
+J1,1,2-pin JST-PH,JST,S2B-PH-K-S,DigiKey,455-1719-ND,JST_PH_S2B-PH-K_1x02_P2.00mm_Horizontal,JST PH 2.0 mm right-angle connector,Battery connector. Rev.A has NO reverse-polarity protection; verify polarity before connection.
+J2,1,1×10 socket,Sullins Connector Solutions,PPTC101LGBN-RC,DigiKey,S5446-ND,PinSocket_1x10_P2.54mm_Horizontal,1×10 2.54 mm right-angle female header,"EEG connector: BIAS, REF, CH1…CH8."
+J3,1,USB-C USB 2.0,GCT,USB4105-GF-A,DigiKey,2073-USB4105-GF-ACT-ND,USB_C_Receptacle_HRO_TYPE-C-31-M-12,"USB-C receptacle, 16 signal contacts, right-angle",GCT part used for Rev.A; verified compatible with the HRO TYPE-C-31-M-12 footprint.
+L1,1,2.2 µH,Würth Elektronik,74404024022,DigiKey,732-5436-1-ND,L_1008_2520Metric,"2.2 µH power inductor, 1.65 A rated",TPS61099 boost inductor.
+"R1, R21",2,10 kΩ,Stackpole Electronics,RMCF0603FT10K0,DigiKey,RMCF0603FT10K0CT-ND,R_0603_1608Metric,10 kΩ 1% resistor,
+R2,1,1 MΩ,YAGEO,RC0603FR-071ML,DigiKey,311-1.00MHRCT-ND,R_0603_1608Metric,1 MΩ 1% resistor,ADS1299 BIAS compensation network with C12.
+"R3, R4, R5, R6, R7, R8, R9, R10, R11, R26",10,4.7 kΩ,YAGEO,RC0603FR-074K7L,DigiKey,311-4.70KHRCT-ND,R_0603_1608Metric,4.7 kΩ 1% resistor,"EEG channel, BIAS and SRB1 series resistors."
+"R12, R13",2,5.1 kΩ,Bourns,CR0603-FX-5101ELF,DigiKey,CR0603-FX-5101ELFCT-ND,R_0603_1608Metric,5.1 kΩ 1% resistor,USB-C CC pull-downs.
+"R14, R15",2,22 Ω,Stackpole Electronics,RMCF0603FT22R0,DigiKey,RMCF0603FT22R0CT-ND,R_0603_1608Metric,22 Ω 1% resistor,USB D+/D− series resistors near ESP32-S3.
+"R16, R18",2,1 kΩ,YAGEO,RC0603FR-071KL,DigiKey,311-1.00KHRCT-ND,R_0603_1608Metric,1 kΩ 1% resistor,LED current limiting.
+R17,1,2 kΩ,Panasonic,ERA-3AEB202V,DigiKey,P2.0KDBCT-ND,R_0603_1608Metric,2 kΩ 0.1% resistor,MCP73831 RPROG; configures approximately 500 mA nominal charge current.
+R19,1,390 kΩ,YAGEO,RC0603FR-07390KL,DigiKey,311-390KHRCT-ND,R_0603_1608Metric,390 kΩ 1% resistor,TPS61099 feedback divider.
+"R20, R22, R23, R24, R25",5,100 kΩ,YAGEO,RC0603FR-07100KL,DigiKey,311-100KHRCT-ND,R_0603_1608Metric,100 kΩ 1% resistor,TPS61099 feedback and logic pull resistors.
+SW1,1,Momentary SPST,Omron,B3FS-1000P,DigiKey,SW423CT-ND,SW_SPST_Omron_B3FS-100xP,Tactile push button,ESP32 boot/programming support.
+SW2,1,SPDT slide switch,C&K,PCM12SMTR,DigiKey,401-2016-1-ND,SW_SPDT_PCM12,Right-angle SMD SPDT slide switch,"Used as logic-level PWR_EN selector, not as the main current path."
+U1,1,ESP32-S3-WROOM-1-N8R8,Espressif Systems,ESP32-S3-WROOM-1-N8R8,DigiKey,5407-ESP32-S3-WROOM-1-N8R8CT-ND,XCVR_ESP32S3WROOM1N8R8,"ESP32-S3 module, 8 MB flash + 8 MB PSRAM",Exact Rev.A module variant.
+U2,1,ADS1299,Texas Instruments,ADS1299IPAGR,DigiKey,296-34818-1-ND,QFP50P1200X1200X120-64N,"8-channel, 24-bit biopotential AFE, TQFP-64",Rev.A ordered part. The schematic value may appear as ADS1299IPAG; 'R' denotes tape-and-reel packaging.
+U3,1,AP2112K-3.3,Diodes Incorporated,AP2112K-3.3TRG1,DigiKey,AP2112K-3.3TRG1DICT-ND,SOT-23-5,3.3 V 600 mA LDO,+3V3_DIG regulator.
+U4,1,LP5907-3.3,Texas Instruments,LP5907MFX-3.3/NOPB,DigiKey,296-38557-1-ND,SOT-23-5,Low-noise 3.3 V 250 mA LDO,+3V3_AFE regulator.
+U5,1,MCP73831-2,Microchip Technology,MCP73831T-2ATI/OT,DigiKey,MCP73831T-2ATI/OTCT-ND,SOT-23-5,Single-cell Li-Ion/LiPo linear charger,R17 = 2 kΩ; use a cell compatible with the configured charge current.
+U6,1,USBLC6-2SC6,STMicroelectronics,USBLC6-2SC6Y,DigiKey,497-11882-1-ND,SOT-23-6,2-line USB ESD protection,Y suffix is the ordered Rev.A variant.
+U7,1,TPS61099,Texas Instruments,TPS61099DRVR,DigiKey,296-TPS61099DRVRCT-ND,WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm,Adjustable synchronous boost converter,Generates +5V_BOOST; small exposed-pad package requires careful assembly.
