@@ -15,7 +15,7 @@ The current reference firmware is developed for the **ESP32-S3-WROOM-1-N8R8** an
 - hardware configuration;
 - firmware updates.
 
-> **Current reference version:** V1.3  
+> **Current reference version:** V1.3.1  
 > **Hardware:** IM-BCI8 Rev.A  
 > **Framework:** Arduino / ESP32  
 > **Status:** Experimental, actively developed
@@ -32,8 +32,8 @@ See [`../SAFETY.md`](../SAFETY.md) before using the device for human EEG acquisi
 firmware/
 ├── README.md
 │
-└── IM_BCI8_V1_3/
-    ├── IM_BCI8_V1_3.ino
+└── IM_BCI8_V1_3_1/
+    ├── IM_BCI8_V1_3_1.ino
     └── secrets.example.h
 ```
 
@@ -575,7 +575,7 @@ For example:
 
 ```text
 Hardware Rev.A
-└── Firmware V1.3
+└── Firmware V1.3.1
 ```
 
 Future releases should avoid silently replacing a previously tested firmware version.
