@@ -307,22 +307,69 @@ A more complete safety document is available in [`SAFETY.md`](SAFETY.md).
 
 ```text
 IM-BCI8/
+├── README.md
+├── SAFETY.md
+├── .gitignore
+│
 ├── hardware/
+│   ├── README.md
 │   ├── kicad/
+│   │   ├── IM-BCI8_RevA.kicad_pro
+│   │   ├── IM-BCI8_RevA.kicad_sch
+│   │   └── IM-BCI8_RevA.kicad_pcb
+│   │
 │   └── manufacturing/
+│       ├── README.md
+│       ├── BOM/
+│       │   └── IM-BCI8_RevA_BOM.csv
+│       └── gerbers/
+│           └── IM-BCI8_RevA_Gerbers.zip
 │
 ├── firmware/
+│   ├── README.md
+│   └── IM_BCI8_V1_3_1/
+│       ├── IM_BCI8_V1_3_1.ino
+│       └── secrets.example.h
 │
 ├── mechanical/
-│   ├── headset/
-│   ├── electrode-holders/
-│   └── enclosure/
+│   ├── README.md
+│   │
+│   ├── derived/
+│   │   └── IM-BCI8_Comfort_Tip.STL
+│   │
+│   ├── enclosure/
+│   │   ├── IM-BCI8_Enclosure_Body.STL
+│   │   └── IM-BCI8_Enclosure_Cover.STL
+│   │
+│   ├── earclip/
+│   │   └── IM-BCI8_Compliant_Earclip.STL
+│   │
+│   └── upstream/
+│       └── openbci-ultracortex-mark-iv/
+│           ├── LICENSE.md
+│           ├── UPSTREAM.md
+│           │
+│           ├── frame/
+│           │   ├── M4_Medium_Front.stl
+│           │   └── M4_Medium_Back.stl
+│           │
+│           ├── inserts/
+│           │   └── M4_Hardware_insert_105dot5_percent.STL
+│           │
+│           ├── clips/
+│           │   └── M4_Wire_Clip.stl
+│           │
+│           └── electrode-holders/
+│               ├── M4_Hardware_09_Eholder.STL
+│               └── M4_Hardware_09_Octabolt.STL
 │
-├── docs/
-│
-├── characterization/
-│
-└── examples/
+└── docs/
+    └── images/
+        ├── architecture.png
+        ├── characterization-noise.png
+        ├── headset-overview.jpg
+        ├── im-bci8-hero.jpg
+        └── web-interface.png
 ```
 
 ### `hardware/`
