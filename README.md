@@ -12,8 +12,7 @@ The system combines an **8-channel ADS1299 analog front-end**, an **ESP32-S3**, 
 
 The goal of this repository is to make the complete prototype reproducible and understandable: electronics, firmware, assembly information, mechanical files, characterization data and troubleshooting procedures are progressively being documented here.
 
-> 📷 **Illustration placeholder — Main project photo**  
-> Clean photograph of the complete assembled IM-BCI8 headset, preferably on a neutral background, showing the headset, dry electrodes and side-mounted electronics enclosure.
+![IM-BCI8 complete headset](docs/images/im-bci8-hero.jpg)
 
 ---
 
@@ -83,8 +82,7 @@ USB-C
     └── LiPo charging
 ```
 
-> 🖼️ **Illustration placeholder — Architecture diagram**  
-> Clean block diagram showing electrodes → ADS1299 → ESP32-S3 → Wi-Fi/browser, together with the LiPo battery, charger and separate power rails. This should eventually replace or complement the text diagram above.
+![IM-BCI8 system architecture](docs/images/architecture.png)
 
 ---
 
@@ -138,9 +136,7 @@ The current interface provides:
 
 No dedicated acquisition dongle is required.
 
-> 🖥️ **Illustration placeholder — Web interface**  
-> Screenshot of the LIVE page showing the eight separated EEG channels. Prefer a real acquisition or internal test signal rather than an empty interface.
-
+![IM-BCI8 web interface](docs/images/web-interface.png)
 ---
 
 ## Headset and mechanical design
@@ -170,9 +166,7 @@ The current headset uses approximately **$70 USD of material and components**, i
 
 Detailed sourcing and assembly information will be provided in the `mechanical/` and `docs/` directories.
 
-> 🧩 **Illustration placeholder — Headset construction**  
-> Photograph or exploded CAD view identifying the Ultracortex frame, electrode holders, dry electrodes, IM-BCI8 enclosure, reference electrode and BIAS electrode.
-
+![Ultracortex-based IM-BCI8 headset](docs/images/headset-overview.jpg)
 ---
 
 ## AI-assisted development
@@ -228,8 +222,7 @@ Current and planned validation work includes:
 
 Raw characterization data and test procedures will progressively be added to this repository.
 
-> 📈 **Illustration placeholder — Characterization result**  
-> Eventually place one representative characterization plot here, preferably input-referred noise or frequency response, once the protocol and result are considered sufficiently reliable for publication.
+![IM-BCI8 system architecture](docs/images/characterization-noise.png)
 
 ---
 
