@@ -559,13 +559,13 @@ The intended structure of this directory is:
 hardware/
 ├── README.md
 ├── kicad/
-│   ├── IM-BCI8.kicad_pro
-│   ├── IM-BCI8.kicad_sch
-│   └── IM-BCI8.kicad_pcb
+│   ├── IM-BCI8_RevA.kicad_pro
+│   ├── IM-BCI8_RevA.kicad_sch
+│   └── IM-BCI8_RevA.kicad_pcb
 │
 ├── manufacturing/
 │   ├── gerbers/
-│   ├── BOM.csv
+│   ├── BOM/
 │   └── README.md
 │
 └── images/
