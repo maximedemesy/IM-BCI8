@@ -222,7 +222,7 @@ Current and planned validation work includes:
 
 Raw characterization data and test procedures will progressively be added to this repository.
 
-![IM-BCI8 system architecture](docs/images/characterization-noise.png)
+![IM-BCI8 input-referred noise characterization](docs/images/characterization-noise.png)
 
 ---
 
