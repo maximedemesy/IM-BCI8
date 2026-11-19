@@ -547,7 +547,8 @@ It excludes:
 - failed parts or spare components;
 - development time.
 
-A structured BOM will be provided in the manufacturing directory so the cost can be recalculated as component prices change.
+A structured Rev.A BOM is available in
+[`manufacturing/BOM/IM-BCI8_RevA_BOM.csv`](manufacturing/BOM/IM-BCI8_RevA_BOM.csv).
 
 ---
 
