@@ -6,31 +6,34 @@
 > **Intended use:** Education, research, experimentation and BCI development  
 > **Not a medical device**
 
-IM-BCI8 is a personal open-hardware EEG project designed to explore how accessible a complete Brain-Computer Interface platform can be made using readily available components, 3D printing and open-source tools.
+IM-BCI8 is a personal open-hardware EEG project designed to explore how accessible a complete Brain-Computer Interface platform can be made using readily available components, open-source hardware, 3D printing and modern development tools.
 
-The system combines an **8-channel ADS1299 analog front-end**, an **ESP32-S3**, battery operation, Wi-Fi connectivity, a browser-based acquisition interface and a **3D-printable dry-electrode headset**.
+The system combines an **8-channel ADS1299 analog front-end**, an **ESP32-S3**, battery operation, Wi-Fi connectivity, a browser-based acquisition interface and a dry-electrode headset based on the **OpenBCI Ultracortex Mark IV**.
 
-The entire project is intended to be reproducible: electronics, firmware, mechanical parts, assembly documentation, characterization data and troubleshooting procedures will be published in this repository.
+The goal of this repository is to make the complete prototype reproducible and understandable: electronics, firmware, assembly information, mechanical files, characterization data and troubleshooting procedures are progressively being documented here.
+
+> 📷 **Illustration placeholder — Main project photo**  
+> Clean photograph of the complete assembled IM-BCI8 headset, preferably on a neutral background, showing the headset, dry electrodes and side-mounted electronics enclosure.
 
 ---
 
 ## Why this project?
 
-IM-BCI8 started as a personal project and as a gift, but quickly evolved into a broader engineering experiment.
+IM-BCI8 originally started as a personal side project and as a gift, but quickly evolved into a broader engineering experiment.
 
-Commercial and research-grade EEG platforms can make experimenting with Brain-Computer Interfaces expensive, particularly for students, makers and independent developers.
+Commercial EEG platforms can make experimenting with Brain-Computer Interfaces expensive, particularly for students, makers and independent developers.
 
-The **OpenBCI ecosystem and Cyton board were a major inspiration for this project**. Their work demonstrated how open hardware can make biosignal acquisition considerably more accessible.
+The **OpenBCI ecosystem and Cyton board were major inspirations for this project**. Their work demonstrated how open hardware can make biosignal acquisition considerably more accessible.
 
 IM-BCI8 does not aim to replace OpenBCI.
 
-Instead, it explores a different highly integrated architecture focused on:
+Instead, it explores a more integrated and low-cost architecture focused on:
 
 - low prototype cost;
 - simple wireless operation;
-- no external dongle or computer-side acquisition hardware;
-- a browser-based user interface;
-- 3D-printable mechanical hardware;
+- no external acquisition dongle;
+- a browser-based user interface hosted directly by the device;
+- compatibility with an existing open-source 3D-printable headset;
 - dry-electrode experimentation;
 - easy modification of both hardware and firmware.
 
@@ -38,9 +41,50 @@ The current prototype costs approximately **$150 USD for the PCB and electronic 
 
 The complete headset adds approximately **$70 USD**, including dry electrodes, wiring, springs, mechanical hardware and 3D-printing material.
 
-This puts the current prototype at roughly **$220 USD in material cost for the complete system**.
+This puts the current complete experimental setup at roughly **$220 USD in material cost**.
 
 These figures are approximate prototype costs and exclude assembly labor, tools, shipping, import duties and development time.
+
+---
+
+## System architecture
+
+The current platform is built around a relatively simple architecture:
+
+```text
+Dry EEG electrodes
+        │
+        ▼
+   Input filtering
+        │
+        ▼
+     ADS1299
+  8-channel AFE
+        │
+       SPI
+        │
+        ▼
+    ESP32-S3
+        │
+        ├── Wi-Fi
+        ├── Web interface
+        ├── Recording
+        └── OTA updates
+
+LiPo battery
+    │
+    ├── 3.3 V digital rail
+    ├── 3.3 V analog rail
+    └── ~5 V analog rail
+
+USB-C
+    │
+    ├── Firmware / development
+    └── LiPo charging
+```
+
+> 🖼️ **Illustration placeholder — Architecture diagram**  
+> Clean block diagram showing electrodes → ADS1299 → ESP32-S3 → Wi-Fi/browser, together with the LiPo battery, charger and separate power rails. This should eventually replace or complement the text diagram above.
 
 ---
 
@@ -60,7 +104,7 @@ The current IM-BCI8 prototype includes:
 - Common reference electrode
 - BIAS electrode
 - Dry EEG electrodes
-- 3D-printable headset and electronics enclosure
+- Compatibility with a 3D-printable Ultracortex-based headset
 
 The current electrode layout used during development is:
 
@@ -81,9 +125,10 @@ A computer or smartphone can therefore connect directly to the board and access 
 The current interface provides:
 
 - eight-channel live EEG visualization;
-- independent channel identification and scaling;
-- FFT / frequency spectrum visualization;
-- Delta, Theta, Alpha and Beta band analysis;
+- separated channel plots and individual channel identification;
+- configurable signal scaling;
+- FFT / frequency-spectrum visualization;
+- Delta, Theta, Alpha and Beta band visualization;
 - electrode mapping;
 - internal ADS1299 test modes;
 - experimental event markers;
@@ -93,17 +138,28 @@ The current interface provides:
 
 No dedicated acquisition dongle is required.
 
+> 🖥️ **Illustration placeholder — Web interface**  
+> Screenshot of the LIVE page showing the eight separated EEG channels. Prefer a real acquisition or internal test signal rather than an empty interface.
+
 ---
 
-## 3D-printable dry-electrode headset
+## Headset and mechanical design
 
-The mechanical system is strongly inspired by the **OpenBCI Ultracortex Mark IV** architecture.
+The headset itself was **not designed as part of IM-BCI8**.
 
-The headset is assembled primarily from 3D-printed components and standard hardware.
+The current prototype uses the official 3D-printable files from the **OpenBCI Ultracortex Mark IV**, together with community-developed electrode-holder designs.
 
-Custom components developed for IM-BCI8 include the electronics enclosure, mounting solutions and experimental electrode-support components.
+These existing open-source mechanical designs made it possible to focus the project primarily on the electronics, firmware, integration and experimentation rather than redesigning an EEG headset from scratch.
 
-The current complete headset uses approximately **$70 USD of material and components**, including:
+Most of the mechanical components used in the current build therefore originate from the OpenBCI ecosystem or community contributions.
+
+One part had to be recreated specifically for this prototype: a **comfort electrode-holder tip / insert**, because the exact part required for the selected electrode mount could not be found as an available printable file.
+
+The IM-BCI8 electronics enclosure and its integration with the headset are also documented separately where applicable.
+
+All third-party mechanical files included or referenced by this repository will retain appropriate attribution and licensing information.
+
+The current headset uses approximately **$70 USD of material and components**, including:
 
 - dry electrodes;
 - wiring;
@@ -112,7 +168,42 @@ The current complete headset uses approximately **$70 USD of material and compon
 - reference / BIAS contacts;
 - 3D-printing material.
 
-Detailed assembly instructions and printable files will be provided in the `mechanical/` and `docs/` directories.
+Detailed sourcing and assembly information will be provided in the `mechanical/` and `docs/` directories.
+
+> 🧩 **Illustration placeholder — Headset construction**  
+> Photograph or exploded CAD view identifying the Ultracortex frame, electrode holders, dry electrodes, IM-BCI8 enclosure, reference electrode and BIAS electrode.
+
+---
+
+## AI-assisted development
+
+Artificial intelligence played a significant role in the development of this project.
+
+This is a personal side project, and one of my priorities was to iterate quickly and explore ideas without spending unnecessary time on repetitive development tasks.
+
+Tools including **OpenAI GPT-5.6** and **Google Gemini** were used throughout different stages of the project, including:
+
+- brainstorming and architecture discussions;
+- hardware-design review;
+- datasheet interpretation and design checks;
+- firmware development;
+- web-interface development;
+- debugging;
+- documentation;
+- repository organization;
+- test-procedure development.
+
+A significant portion of the ESP32 firmware and browser interface was developed using an AI-assisted, or effectively **“vibe-coded,”** workflow.
+
+AI assistance was also used when discussing and refining parts of the electronic architecture and when preparing documentation for this repository.
+
+This does **not** mean that generated output was assumed to be correct.
+
+Hardware decisions were checked against datasheets and measurements, firmware was tested on the actual device, and the behavior of the complete system was progressively validated experimentally.
+
+AI is treated here as a development and prototyping tool rather than as a substitute for engineering verification.
+
+I am documenting this explicitly because transparency about how the project was created is part of the open-source philosophy of IM-BCI8.
 
 ---
 
@@ -122,7 +213,7 @@ IM-BCI8 is **not a finished commercial product**.
 
 The first hardware prototype is operational and the complete acquisition chain has been successfully tested, but characterization is still ongoing.
 
-Work currently includes:
+Current and planned validation work includes:
 
 - electrical characterization;
 - input-referred noise measurements;
@@ -137,25 +228,60 @@ Work currently includes:
 
 Raw characterization data and test procedures will progressively be added to this repository.
 
+> 📈 **Illustration placeholder — Characterization result**  
+> Eventually place one representative characterization plot here, preferably input-referred noise or frequency response, once the protocol and result are considered sufficiently reliable for publication.
+
 ---
 
-## Known limitations
+## Known design limitations
 
 This first hardware revision was deliberately designed around simplicity, compactness and low cost.
 
 It therefore has several known limitations that are important to understand before reproducing it.
 
-The current revision does **not** include reverse-polarity protection on the battery connector.
+### Battery polarity
 
-The electrode inputs are not protected to the level expected from certified biomedical instrumentation.
+The current revision does **not** include reverse-polarity protection on the battery input.
 
-Battery voltage is not currently monitored by the ESP32.
+Connecting the battery with reversed polarity may permanently damage components.
 
-The design does not provide medical-grade galvanic isolation.
+Battery connector polarity must therefore be verified before power is applied.
 
-Some components and exposed PCB areas remain vulnerable to inappropriate handling, incorrect power connections or electrostatic discharge.
+### Input and component protection
 
-These compromises were accepted for the first experimental prototype and will be documented as potential improvements for future hardware revisions.
+The design intentionally keeps the analog front-end relatively minimal.
+
+The EEG inputs and several sensitive components are not protected to the level expected from commercial or certified biomedical instrumentation.
+
+Incorrect wiring, electrostatic discharge, inappropriate external equipment or accidental overvoltage may damage the board.
+
+### Galvanic isolation
+
+The current design does **not** provide medical-grade galvanic isolation between the USB interface and the EEG electronics.
+
+For this reason, USB must not be connected while the system is attached to a person.
+
+### Battery monitoring
+
+Battery voltage is not currently measured by the ESP32.
+
+A future revision may include a dedicated battery-voltage sensing circuit.
+
+### Prototype robustness
+
+This board was designed as an experimental prototype rather than as a consumer product.
+
+Some design choices prioritize:
+
+- minimal component count;
+- compactness;
+- cost;
+- ease of fabrication;
+- rapid iteration;
+
+over protection against every possible misuse.
+
+These limitations are not hidden issues: they are documented here both for safety and as potential improvement targets for future hardware revisions.
 
 ---
 
@@ -174,11 +300,13 @@ Do not connect the board simultaneously to:
 - a function generator;
 - other grounded laboratory equipment.
 
-Human EEG acquisition should use **battery power and wireless communication only**.
+Human EEG acquisition should use:
+
+**battery power + wireless communication only.**
 
 Anyone reproducing or modifying this project is responsible for understanding the electrical and biological safety implications of their modifications.
 
-A more complete safety document will be available in [`SAFETY.md`](SAFETY.md).
+A more complete safety document is available in [`SAFETY.md`](SAFETY.md).
 
 ---
 
@@ -186,13 +314,47 @@ A more complete safety document will be available in [`SAFETY.md`](SAFETY.md).
 
 ```text
 IM-BCI8/
-├── hardware/           PCB design and manufacturing files
-├── firmware/           ESP32-S3 firmware and web interface
-├── mechanical/         Headset, enclosure and electrode mechanics
-├── docs/               Build and usage documentation
-├── characterization/   Test procedures, measurements and raw data
-└── examples/           EEG experiments and example recordings
+├── hardware/
+│   ├── kicad/
+│   └── manufacturing/
+│
+├── firmware/
+│
+├── mechanical/
+│   ├── headset/
+│   ├── electrode-holders/
+│   └── enclosure/
+│
+├── docs/
+│
+├── characterization/
+│
+└── examples/
 ```
+
+### `hardware/`
+
+KiCad source files, schematics, PCB layout, BOM and manufacturing files.
+
+### `firmware/`
+
+ESP32-S3 firmware and the embedded browser interface.
+
+### `mechanical/`
+
+Mechanical files required to reproduce the current headset configuration, together with attribution to the original OpenBCI and community designs.
+
+### `docs/`
+
+Assembly instructions, flashing procedures, electrode wiring, first-start procedures and troubleshooting.
+
+### `characterization/`
+
+Measurement procedures, raw data and results used to characterize the electronics and complete system.
+
+### `examples/`
+
+Example EEG recordings and simple experiments performed using the platform.
 
 ---
 
@@ -200,24 +362,76 @@ IM-BCI8/
 
 IM-BCI8 is intended to remain an open project.
 
-Hardware improvements, firmware features, mechanical designs, analysis tools, experiments and characterization data are welcome.
+Hardware improvements, firmware features, mechanical improvements, analysis tools, experiments and characterization data are welcome.
 
-If you reproduce the board, test a modification or find a design issue, please consider opening an Issue or submitting a Pull Request.
+If you reproduce the board, test a modification, identify a design problem or develop an improvement, please consider opening an Issue or submitting a Pull Request.
 
-This project is still evolving, and community feedback is part of the development process.
+Examples of useful contributions include:
+
+- hardware protection improvements;
+- analog front-end improvements;
+- firmware optimization;
+- additional signal-processing tools;
+- BrainFlow / LSL / MNE integration;
+- improved browser visualization;
+- alternative electrode systems;
+- additional characterization;
+- replicated measurements on independently built boards;
+- documentation improvements.
+
+The project is still evolving, and community feedback is part of the development process.
 
 ---
 
 ## Roadmap
 
-The next development steps include improved characterization, additional EEG experiments, improved battery monitoring, hardware protection improvements, software integration with external BCI tools and preparation of a second hardware revision based on feedback from the first prototype.
+Potential future developments include:
+
+- additional electrical characterization;
+- validation on multiple independently assembled boards;
+- improved battery monitoring;
+- improved input and power protection;
+- external BCI software integration;
+- improved signal-processing tools;
+- additional EEG experiments;
+- SSVEP and other BCI demonstrations;
+- improved mechanical integration;
+- preparation of a second hardware revision based on testing and community feedback.
+
+---
+
+## Reproducing the project
+
+The long-term goal of this repository is to make the complete setup reproducible from publicly available files.
+
+The documentation will progressively include:
+
+1. PCB ordering and component sourcing
+2. PCB assembly
+3. Visual inspection
+4. Power-rail validation
+5. ESP32 flashing
+6. ADS1299 internal self-tests
+7. Channel-by-channel electrical validation
+8. Headset printing and assembly
+9. Electrode installation and wiring
+10. REF and BIAS installation
+11. First battery-powered acquisition
+12. Troubleshooting
+13. Basic EEG validation experiments
+
+The same procedures used during development of the original prototype will be documented whenever possible.
 
 ---
 
 ## License and attribution
 
-Licensing information for the original IM-BCI8 hardware, firmware and documentation will be added before the first official release.
+Licensing information for the original IM-BCI8 hardware, firmware and documentation will be finalized before the first official release.
 
-Some mechanical components are derived from or compatible with the OpenBCI Ultracortex ecosystem and will retain the licenses and attribution required by their respective upstream projects.
+Third-party files and derivative works will retain the attribution and licensing requirements of their respective upstream projects.
 
-IM-BCI8 is an independent project and is not affiliated with or endorsed by OpenBCI.
+The mechanical headset used for the current prototype is based on the **OpenBCI Ultracortex Mark IV** and associated community designs.
+
+The IM-BCI8 electronics are heavily inspired by the OpenBCI Cyton architecture and the wider OpenBCI ecosystem.
+
+IM-BCI8 is an independent personal project and is not affiliated with or endorsed by OpenBCI.
